@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techtify | IT Services & Consulting for SMEs</title>
+    <meta name="description" content="Techtify provides enterprise-grade IT support, consulting, and infrastructure solutions for SMEs in Metro Manila and beyond.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --grey: #71717a;
+            --grey-light: #a1a1aa;
+            --grey-lighter: #e4e4e7;
+            --grey-dark: #18181b;
+            --grey-darker: #121215;
+            --dark-green: #0f766e;
+            --dark-green-hover: #14b8a6;
+            --dark-green-muted: #134e4a;
+            --dark-blue: #1e3a5f;
+            --dark-blue-hover: #2563eb;
+            --dark-blue-muted: #1e293b;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.65;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 32px;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--dark-green-hover) 100%);
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .nav-links a {
+            color: var(--grey-light);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--dark-green-hover);
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:not(.btn):hover {
+            color: var(--white);
+        }
+
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--dark-green) 0%, #0d5f58 100%);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--dark-green-hover) 0%, var(--dark-green) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(15, 118, 110, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.35);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-nav {
+            padding: 10px 22px;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 32px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(15, 118, 110, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(30, 58, 95, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 680px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--grey-light);
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--dark-green-hover);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.75rem, 5.5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--dark-green-hover) 0%, #5eead4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--grey-light);
+            margin-bottom: 40px;
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .hero-trust {
+            font-size: 0.8rem;
+            color: var(--grey);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero-trust span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-trust span::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--grey);
+            border-radius: 50%;
+        }
+
+        /* Sections */
+        section {
+            padding: 110px 0;
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 64px;
+            max-width: 600px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .section-header p {
+            color: var(--grey-light);
+            font-size: 1.05rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--dark-green-hover);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* Services Section */
+        #services {
+            background-color: var(--grey-darker);
+        }
+
+        #services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 36px;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--dark-green-muted), var(--dark-green));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: rgba(15, 118, 110, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--dark-green-muted) 0%, rgba(15, 118, 110, 0.2) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--white);
+            letter-spacing: -0.3px;
+        }
+
+        .service-card > p {
+            color: var(--grey-light);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .service-card ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .service-card li {
+            font-size: 0.85rem;
+            color: var(--grey);
+            padding-left: 20px;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .service-card:hover li {
+            color: var(--grey-light);
+        }
+
+        .service-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--dark-green-hover);
+            font-size: 0.75rem;
+            top: 1px;
+        }
+
+        /* Why Techtify */
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .why-content p {
+            color: var(--grey-light);
+            margin-bottom: 24px;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .why-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .why-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .why-feature {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .why-feature:hover {
+            border-color: rgba(30, 58, 95, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .why-feature-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--dark-blue-muted);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+
+        .why-feature h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--white);
+            letter-spacing: -0.2px;
+        }
+
+        .why-feature p {
+            font-size: 0.8rem;
+            color: var(--grey);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Expertise */
+        #expertise {
+            background-color: var(--grey-darker);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .expertise-block {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 14px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .expertise-block::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 32px;
+            right: 32px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--dark-green), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .expertise-block:hover {
+            border-color: rgba(15, 118, 110, 0.2);
+        }
+
+        .expertise-block:hover::after {
+            opacity: 1;
+        }
+
+        .expertise-block h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            color: var(--white);
+            letter-spacing: -0.3px;
+        }
+
+        .expertise-block p {
+            font-size: 0.85rem;
+            color: var(--grey);
+            line-height: 1.7;
+        }
+
+        /* Process */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 40px 28px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.008) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            border-color: rgba(15, 118, 110, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .process-step-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(180deg, rgba(15, 118, 110, 0.15) 0%, rgba(15, 118, 110, 0.05) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .process-step h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--white);
+            letter-spacing: -0.3px;
+        }
+
+        .process-step p {
+            font-size: 0.85rem;
+            color: var(--grey);
+            line-height: 1.6;
+        }
+
+        .process-connector {
+            position: absolute;
+            top: 60px;
+            right: -20px;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--dark-green-muted), transparent);
+            opacity: 0.3;
+        }
+
+        /* Contact */
+        #contact {
+            background-color: var(--grey-darker);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .contact-info > p {
+            color: var(--grey-light);
+            margin-bottom: 40px;
+            line-height: 1.75;
+            font-size: 1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--grey-light);
+            font-size: 0.9rem;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .contact-detail:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-detail svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: var(--dark-green-hover);
+        }
+
+        .contact-form-wrapper {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 36px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-form-wrapper h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-form-wrapper h3::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--dark-green);
+            border-radius: 2px;
+        }
+
+        .contact-form-wrapper iframe {
+            width: 100%;
+            min-height: 520px;
+            border: none;
+            border-radius: 12px;
+            background: var(--grey-dark);
+        }
+
+        .priority-note {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--grey);
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .priority-note::before {
+            content: '!';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 0.7rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            background: var(--black);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--grey);
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            color: var(--grey-light);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--grey-dark);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--grey);
+        }
+
+        /* Selection */
+        ::selection {
+            background: rgba(15, 118, 110, 0.3);
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .expertise-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-connector {
+                display: none;
+            }
+
+            .why-grid {
+                gap: 50px;
+            }
+
+            .contact-grid {
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            nav {
+                padding: 16px 24px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 110px 24px 60px;
+                min-height: auto;
+                min-height: 100vh;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .hero-trust {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .section-header {
+                margin-bottom: 48px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .why-features {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form-wrapper iframe {
+                min-height: 450px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .service-card {
+                padding: 28px;
+            }
+
+            .contact-form-wrapper {
+                padding: 24px;
+            }
+
+            .contact-form-wrapper iframe {
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">Techtify</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#why">Why Techtify</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#process">Process</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="btn btn-primary btn-nav">Book a Consult</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        IT Services & Consulting
+                    </div>
+                    <h1>Smart IT for Businesses <span>Without an IT Department</span></h1>
+                    <p class="hero-subtitle">We provide reliable IT support, consulting, and infrastructure solutions designed specifically for SMEs. Enterprise-grade practices, adapted for smaller teams.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Schedule a Free Consultation</a>
+                        <a href="#services" class="btn btn-secondary">View Services</a>
+                    </div>
+                    <div class="hero-trust">
+                        <span>Based in Metro Manila</span>
+                        <span>Supporting local and remote teams</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">What We Offer</span>
+                    <h2>Our Services</h2>
+                    <p>Comprehensive IT solutions tailored to the needs and budgets of small and medium enterprises.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🛟</div>
+                        <h3>Managed IT Support</h3>
+                        <p>Day-to-day helpdesk and technical assistance to keep your team productive without interruption.</p>
+                        <ul>
+                            <li>User onboarding and offboarding</li>
+                            <li>Device setup and configuration</li>
+                            <li>Tickets and SLA management</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🗺️</div>
+                        <h3>IT Consulting & Roadmapping</h3>
+                        <p>Strategic assessment of your current setup with clear recommendations for improvement.</p>
+                        <ul>
+                            <li>Technology assessment and audit</li>
+                            <li>Tool selection and upgrades</li>
+                            <li>Cybersecurity roadmap</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">☁️</div>
+                        <h3>Cloud & Modern Workplace</h3>
+                        <p>Enable your team to work anywhere with secure, modern collaboration tools and policies.</p>
+                        <ul>
+                            <li>Email and collaboration suites</li>
+                            <li>Remote work readiness</li>
+                            <li>Policy development</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🌐</div>
+                        <h3>Network & Infrastructure</h3>
+                        <p>Design, deployment, and management of reliable office networks and connectivity solutions.</p>
+                        <ul>
+                            <li>Office and branch networking</li>
+                            <li>Wi-Fi and VPN solutions</li>
+                            <li>Basic security implementation</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💻</div>
+                        <h3>Web & Systems Project Coordination</h3>
+                        <p>Working alongside your development partners to deliver websites, internal systems, and applications on time.</p>
+                        <ul>
+                            <li>Project scoping and planning</li>
+                            <li>Vendor coordination</li>
+                            <li>Requirements management</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>Device & Procurement Advisory</h3>
+                        <p>Guidance on hardware selection, standardisation, and rollout for consistent, manageable fleets.</p>
+                        <ul>
+                            <li>Laptop and device recommendations</li>
+                            <li>Procurement and vendor coordination</li>
+                            <li>Device lifecycle planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Why Choose Us</span>
+                    <h2>Why Techtify</h2>
+                    <p>We bring the rigour and reliability of enterprise IT to businesses that need it most.</p>
+                </div>
+                <div class="why-grid">
+                    <div class="why-content">
+                        <p>We understand that SMEs need technology that works reliably without requiring a full IT department. Our approach combines proven enterprise methodologies with practical, cost-effective solutions tailored to your scale.</p>
+                        <p>We believe in clear communication, predictable costs, and measurable outcomes. Whether you need a one-off project or ongoing support, we adapt our engagement model to fit your needs—not the other way around.</p>
+                        <p>Based in Metro Manila, we are comfortable supporting local on-site needs as well as regional and fully remote teams across the APAC region.</p>
+                    </div>
+                    <div class="why-features">
+                        <div class="why-feature">
+                            <div class="why-feature-icon">🎯</div>
+                            <h4>Enterprise Experience, SME Focus</h4>
+                            <p>Our team brings years of regional enterprise IT experience, distilled into practical approaches that work for smaller organisations.</p>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-feature-icon">⚖️</div>
+                            <h4>Vendor-Neutral Recommendations</h4>
+                            <p>We recommend tools and solutions based on your needs, not on vendor partnerships or commissions.</p>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-feature-icon">📋</div>
+                            <h4>Clear Engagement Models</h4>
+                            <p>Choose between project-based or retainer arrangements with transparent pricing and defined deliverables.</p>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-feature-icon">🌍</div>
+                            <h4>Local Presence, Regional Reach</h4>
+                            <p>Based in Metro Manila with the capability to support teams across multiple locations and time zones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertise">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Our Capabilities</span>
+                    <h2>Our Expertise</h2>
+                    <p>Deep capabilities across the full IT lifecycle, delivered with a consulting-minded approach.</p>
+                </div>
+                <div class="expertise-grid">
+                    <div class="expertise-block">
+                        <h3>End-User Services & IT Operations</h3>
+                        <p>We manage the full spectrum of day-to-day IT operations, from helpdesk and ticketing to incident handling and SLA management using industry-standard platforms.</p>
+                    </div>
+                    <div class="expertise-block">
+                        <h3>Identity & Access Management</h3>
+                        <p>Secure user lifecycle management from onboarding to departure, including automated workflows and integration with Workday, Okta, and other identity providers.</p>
+                    </div>
+                    <div class="expertise-block">
+                        <h3>Device & Endpoint Management</h3>
+                        <p>Centralised management of macOS, Windows, iOS, and Android devices using Jamf Pro, Microsoft Intune, and SCCM for consistent security and configuration.</p>
+                    </div>
+                    <div class="expertise-block">
+                        <h3>Security & Compliance</h3>
+                        <p>Device encryption standards (BitLocker, FileVault), vulnerability remediation, remote support via secure tools, and NIST-aligned disposal processes.</p>
+                    </div>
+                    <div class="expertise-block">
+                        <h3>VIP & Executive Support</h3>
+                        <p>Dedicated support for leadership and high-profile users, including live events, Teams Rooms setup, and collaboration with room systems from Logitech and Meraki.</p>
+                    </div>
+                    <div class="expertise-block">
+                        <h3>Asset, CMDB & Procurement Governance</h3>
+                        <p>Complete asset lifecycle management from procurement through disposal, maintaining accurate CMDB records and coordinating with vendors for optimal terms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Our Approach</span>
+                    <h2>How We Work</h2>
+                    <p>A straightforward process designed to deliver value quickly while maintaining quality.</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="process-step-number">01</div>
+                        <h3>Discovery & Assessment</h3>
+                        <p>We learn about your business, current setup, pain points, and goals through structured conversations and technical review.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">02</div>
+                        <h3>Recommendations & Options</h3>
+                        <p>We present clear, practical options with honest assessment of trade-offs, timelines, and investment levels.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">03</div>
+                        <h3>Implementation & Handover</h3>
+                        <p>We execute the agreed solution, manage vendors, and ensure proper knowledge transfer to your team.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-number">04</div>
+                        <h3>Ongoing Support</h3>
+                        <p>Optionally, we provide continued support through a retainer model to maintain stability and address new needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <span class="section-label">Get in Touch</span>
+                        <h2>Let's Discuss Your IT Needs</h2>
+                        <p>Whether you are starting from scratch or looking to improve your current setup, we are here to help. Reach out even if you are not sure where to begin—our initial consultation is free, and there is no obligation.</p>
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                <span>Metro Manila, Philippines</span>
+                            </div>
+                            <div class="contact-detail">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                <span>hello@techtifyph.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <h3>Send an Inquiry</h3>
+                        <!-- TODO: Replace the src value below with the actual Google Form embed URL -->
+                        <iframe 
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSd4-B5nPqWBAdXIy0Qbf6DBPUJ6mTaYPehFw5L-m94AcweghQ/viewform?usp=publish-editor" 
+                            title="Contact Form">
+                        </iframe>
+                        <p class="priority-note">For urgent matters, send an email with "Priority" in the subject line.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-copyright">
+                    © <script>document.write(new Date().getFullYear())</script> Techtify Information Technology Services. All rights reserved.
+                </p>
+                <p class="footer-tagline">Smart IT. Scalable Solutions.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
